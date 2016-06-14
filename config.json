@@ -1,0 +1,32 @@
+{
+  "_comment": [
+     "config.json: For Rocket Arduino-lite IBM Watson IoT Platform Sketch",
+     "Modification History:",
+     "06jun16,drp   Initial version"
+     ],
+  "name": "Arduino-lite IBM Watson IoT Platform Sketch",
+  "description":"A device communicates with the IBM Watson IoT Platform.",
+  "tags": [
+     "arduino",
+     "arduino-lite",
+     "rocket",
+     "arm",
+     "x86"
+  ],
+  "lang": "C",
+  "cmds": {
+        "clone":"prjClone.sh -cfg %config% -prj %dest%"
+  },
+  "visibility": "local",
+  "executable": "outdir/zephyr.elf",
+  "type": "application",
+  "project_data": {
+    "init_clone":
+        { "fetch": { "scm":"git", "url":"https://github.com/wind-river/rocket-arduino-lite-sketch-bluemix.git" } },
+    "arduino-lite":
+      { "fetch": { "scm":"git", "url":"https://github.com/wind-river/rocket-arduino-lite.git", "tag": "rocket_v1.1" } },
+    "rocket_kernel":
+        { "fetch": { "scm":"git", "url":"https://github.com/wind-river-rocket/helix-rocket-kernel.git", "tag": "rocket_v1.1" },
+          "config" : { "cmd":"patch -d rocket_kernel/zephyr -p1 < arduino-lite/rocket-kernel-patch/0001-Add-ADC-driver-for-K64F.patch; patch -d rocket_kernel/zephyr -p1 < arduino-lite/rocket-kernel-patch/0002-Disable-unaligned-access-fault-for-K64F.patch", "no_cd":"1" } }
+        }
+}

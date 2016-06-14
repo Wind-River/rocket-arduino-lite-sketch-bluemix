@@ -1,0 +1,15 @@
+% Application       
+
+% TASK NAME      PRIO  ENTRY       STACK  GROUPS
+% ==============================================
+  TASK MAIN      7     arduino     2048   [EXE]
+  TASK INTMON    5     intMonitor  1024   [EXE]
+
+% MUTEX NAME
+% ================
+  MUTEX MT_MUT
+
+% EVENT NAME
+% =============
+  EVENT ADCREADY NULL
+  EVENT LWIP NULL
